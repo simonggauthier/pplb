@@ -1,16 +1,16 @@
 import GathererCrafter from "./base/gatherer-crafter.js";
 
-export default class Woodman {
+export default class Miner {
     constructor(controller) {
         this.controller = controller;
 
         this.bases = {
             gathererCrafter: new GathererCrafter(controller, {
-                gatherPosition: [-1, 0],
-                craftPosition: [-2, -3],
-                gatherSkillName: 'woodcutting',
-                gatherItemCode: 'ash_wood',
-                craftItemCode: 'ash_plank',
+                gatherPosition: [2, 0],
+                craftPosition: [1, 5],
+                gatherSkillName: 'mining',
+                gatherItemCode: 'copper_ore',
+                craftItemCode: 'copper',
                 craftItemCount: 2,
                 craftItemRatio: 10
             })
@@ -18,7 +18,7 @@ export default class Woodman {
     }
 
     async start() {
-        this.controller.say('Woodman mode');
+        this.controller.say('Miner mode');
 
         let run = true;
     

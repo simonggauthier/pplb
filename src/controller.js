@@ -57,6 +57,10 @@ export default class Controller {
         return ret;
     }
 
+    getSkillLevel(skillName) {
+        return this.character[skillName + '_level'];
+    }
+
     async wait(seconds) {
         this.say('Waiting for ' + seconds + ' seconds...');
 

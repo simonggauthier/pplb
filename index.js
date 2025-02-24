@@ -1,34 +1,36 @@
 import Controller from './src/controller.js';
 import ChickenFighter  from './src/scripts/chicken-fighter.js';
 import Woodman from './src/scripts/woodman.js';
+import Miner from './src/scripts/miner.js';
 import Log from './src/log.js';
 
-const characters = [
+const scripts = [
     {
-        name: 'PepinLeBref',
-        script: (controller) => {
-            return new ChickenFighter(controller);
-        }
+        name: 'fight',
+        make: (controller) => new ChickenFighter(controller)
     },
     {
-        name: 'Marmotte',
-        script: (controller) => {
-            return new Woodman(controller);
-        }
+        name: 'cut',
+        make: (controller) => new Woodman(controller)
+    },
+    {
+        name: 'mine',
+        make: (controller) => new Miner(controller)
     }
 ];
 
 async function main () {
     const args = process.argv.slice(2);
     const log = new Log('info');
-    const character = characters.find((c) => c.name === args[0]);
-    const controller = new Controller(character.name, log);
+    const characterName = args[0];
+    const controller = new Controller(characterName, log);
+    const script = scripts.find(script => script.name === args[1]);
 
     await controller.getCharacter();
 
     controller.sayStatus();
 
-    character.script(controller).start();
+    script.make(controller).start();
 }
 
 main();
