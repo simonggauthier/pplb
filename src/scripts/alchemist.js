@@ -18,8 +18,8 @@ export default class Alchemist {
                 gatherSkillName: 'alchemy',
                 gatherItemCode: 'sunflower',
                 craftItemCode: 'small_health_potion',
-                craftItemCount: 10,
-                craftItemRatio: 3
+                craftItemCount: 50000,
+                craftItemRatio: 50000
             })
         ];
     }
