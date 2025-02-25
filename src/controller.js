@@ -84,6 +84,8 @@ export default class Controller {
 
     async moveTo(x, y) {
         if (this.character['x'] === x && this.character['y'] === y) {
+            this.say('Already at ' + x + ', ' + y);
+
             return;
         }
 
@@ -140,6 +142,14 @@ export default class Controller {
             this.say('\tGot ' + item['quantity'] + ' ' + item['code']);
         });
 
+        await this.waitForCooldown(cd(result));
+    }
+
+    async depositToBank(code, quantity) {
+        this.say('Depositing ' + quantity + ' ' + code + ' to bank');
+
+        const result = await this.api.depositToBank(code, quantity);
+ 
         await this.waitForCooldown(cd(result));
     }
 };

@@ -82,4 +82,11 @@ export default class Api {
             quantity
         })
     }
+
+    async depositToBank(code, quantity) {
+        return await this.post('/my/' + this.characterName + '/action/bank/deposit', {
+            code,
+            quantity
+        });
+    }
 }

@@ -4,7 +4,7 @@ export default class GathererCrafter {
         this.options = options;
     }
 
-    async gatherAndCraft() {
+    async start() {
         await this.craft();
         await this.gather();
     }
