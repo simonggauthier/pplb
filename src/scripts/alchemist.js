@@ -8,9 +8,9 @@ export default class Alchemist {
         this.bases = [
             new Banker(controller, {
                 bankPosition: [4, 1],
-                itemCodesToBank: ['small_health_potion'],
-                itemThreshold: 10,
-                itemCodesToWithdraw: ['sunflower']
+                itemCodesToBank: ['sunflower'],
+                itemThreshold: 80,
+                itemCodesToWithdraw: []
             }),
             new GathererCrafter(controller, {
                 gatherPosition: [2, 2],
