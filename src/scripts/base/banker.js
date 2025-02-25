@@ -19,7 +19,7 @@ export default class Banker {
 
                 if (this.options.itemCodesToWithdraw) {
                     for (let itemCodeToWithdraw of this.options.itemCodesToWithdraw) {
-                        for (bankItem of bankItems) {
+                        for (let bankItem of bankItems) {
                             if (bankItem['code'] === itemCodeToWithdraw) {
                                 const count = this.controller.getInventoryItemCount(itemCodeToWithdraw);
             
