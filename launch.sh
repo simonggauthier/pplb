@@ -2,3 +2,4 @@
 
 npm run main Marmotte cut > marmotte.log &
 npm run main Pinson mine > pinson.log &
+npm run main NatPeggle fish > natpeggle.log &
