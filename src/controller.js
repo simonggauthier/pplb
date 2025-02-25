@@ -145,11 +145,25 @@ export default class Controller {
         await this.waitForCooldown(cd(result));
     }
 
+    async getBankItems() {
+        const result = await this.api.getBankItems();
+
+        return result.data.data;
+    }
+
     async depositToBank(code, quantity) {
         this.say('Depositing ' + quantity + ' ' + code + ' to bank');
 
         const result = await this.api.depositToBank(code, quantity);
  
+        await this.waitForCooldown(cd(result));
+    }
+
+    async withdrawFromBank(code, quantity) {
+        this.say('Withdrawing ' + quantity + ' ' + code + ' from bank');
+
+        const result = await this.api.withdrawFromBank(code, quantity);
+
         await this.waitForCooldown(cd(result));
     }
 };

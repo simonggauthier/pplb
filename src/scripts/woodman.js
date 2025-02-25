@@ -9,7 +9,8 @@ export default class Woodman {
             new Banker(controller, {
                 bankPosition: [4, 1],
                 itemCodesToBank: ['ash_plank', 'sap'],
-                itemThreshold: 10
+                itemThreshold: 10,
+                itemCodesToWithdraw: ['ash_wood']
             }),
             new GathererCrafter(controller, {
                 gatherPosition: [-1, 0],

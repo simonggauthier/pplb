@@ -89,4 +89,15 @@ export default class Api {
             quantity
         });
     }
+
+    async getBankItems() {
+        return await this.get('/my/bank/items');
+    }
+
+    async withdrawFromBank(code, quantity) {
+        return await this.post('/my/' + this.characterName + '/action/bank/withdraw', {
+            code,
+            quantity
+        });
+    }
 }

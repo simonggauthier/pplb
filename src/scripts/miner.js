@@ -9,7 +9,8 @@ export default class Miner {
             new Banker(controller, {
                 bankPosition: [4, 1],
                 itemCodesToBank: ['copper'],
-                itemThreshold: 10
+                itemThreshold: 10,
+                itemCodesToWithdraw: ['copper_ore']
             }),
             new GathererCrafter(controller, {
                 gatherPosition: [2, 0],
