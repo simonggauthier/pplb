@@ -2,6 +2,7 @@ import Controller from './src/controller.js';
 import ChickenFighter  from './src/scripts/chicken-fighter.js';
 import Woodman from './src/scripts/woodman.js';
 import Miner from './src/scripts/miner.js';
+import Fisherman from './src/scripts/fisherman.js';
 import Log from './src/log.js';
 
 const scripts = [
@@ -16,6 +17,10 @@ const scripts = [
     {
         name: 'mine',
         make: (controller) => new Miner(controller)
+    },
+    {
+        name: 'fish',
+        make: (controller) => new Fisherman(controller)
     }
 ];
 
