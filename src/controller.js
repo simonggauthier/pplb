@@ -185,6 +185,14 @@ export default class Controller {
         await this.waitForCooldown(cd(result));
     }
 
+    async useItem(code) {
+        this.say('Using ' + code);
+
+        const result = await this.api.useItem(code);
+
+        await this.waitForCooldown(cd(result));
+    }
+
     async crash() {
         await this.api.crash();
     }

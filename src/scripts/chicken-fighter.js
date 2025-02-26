@@ -7,11 +7,6 @@ export default class ChickenFighter {
         this.controller = controller;
 
         this.bases = [
-            new Banker(controller, {
-                bankPosition: [4, 1],
-                itemCodesToWithdraw: ['cooked_gudgeon'],
-                itemCountToWithdraw: 10
-            }),
             new Healer(controller, {
                 healRatio: 0.7,
                 healFoodItemCode: 'cooked_gudgeon'

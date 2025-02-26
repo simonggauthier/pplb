@@ -10,7 +10,8 @@ export default class Healer {
                 this.controller.getInventoryItemCount(this.options.healFoodItemCode) > 0) {
                 this.controller.say('Eating ' + this.options.healFoodItemCode);
                 
-                await this.controller.api.use(this.options.healFoodItemCode);
+                await this.controller.useItem(this.options.healFoodItemCode);
+                await this.controller.getCharacter();
             } else {
                 this.controller.say('Resting');
                 

@@ -95,6 +95,13 @@ export default class Api {
             quantity
         });
     }
+    
+    async useItem(code) {  
+        return await this.post('/my/' + this.characterName + '/action/use', {
+            code,
+            quantity: 1
+        });
+    }
 
     async crash() {
         return await this.post('/crash');
