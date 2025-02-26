@@ -140,6 +140,7 @@ export default class Controller {
         this.say('Gathering');
 
         const result = await this.api.gather();
+
         const gather = result.data.data['details'];
 
         gather['items'].forEach(item => {

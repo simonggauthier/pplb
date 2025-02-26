@@ -23,6 +23,8 @@ export default class Api {
         return axios.post(this.baseUrl + url, data, {
             headers: this.headers
         }).catch(e => {
+            this.printError(e);
+            
             this.erroHandler.handle(e);
         });
     }
