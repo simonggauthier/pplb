@@ -5,11 +5,17 @@ export default class Healer {
     }
 
     async start() {
-        while (this.controller.getHp() < (this.controller.getMaxHp() * this.options.healRatio)) {
-            this.controller.say('My health is low, healing.');
-            
-            await this.controller.rest();
-            await this.controller.getCharacter();
+        while (this.controller.getHp() < this.controller.getMaxHp() * this.options.healRatio) {
+            if (this.options.healFoodItemCode &&
+                this.controller.getInventoryItemCount(this.options.healFoodItemCode) > 0) {
+                this.controller.say('Eating ' + this.options.healFoodItemCode);
+                
+                await this.controller.api.use(this.options.healFoodItemCode);
+            } else {
+                this.controller.say('Resting');
+                
+                await this.controller.rest();
+            }
         }
     }
 };

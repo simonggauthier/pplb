@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class Api {
-    constructor(token, characterName, log) {
+    constructor(token, characterName, log, erroHandler) {
         this.baseUrl = 'https://api.artifactsmmo.com';
         this.headers = {
             'Accept': 'application/json',
@@ -12,6 +12,7 @@ export default class Api {
         this.token = token;
         this.characterName = characterName;
         this.log = log;
+        this.erroHandler = erroHandler;
     }
 
     async post(url, data) {
@@ -19,15 +20,11 @@ export default class Api {
         this.log.debug(' - With headers: ');
         this.log.debug(this.headers);
 
-        try {
-            return axios.post(this.baseUrl + url, data, {
-                headers: this.headers
-            });
-        } catch (e) {
-            this.printError(e);
-
-            return null;
-        }
+        return axios.post(this.baseUrl + url, data, {
+            headers: this.headers
+        }).catch(e => {
+            this.erroHandler.handle(e);
+        });
     }
 
     async get(url) {
@@ -35,15 +32,11 @@ export default class Api {
         this.log.debug(' - With headers: ');
         this.log.debug(this.headers);
 
-        try {
-            return axios.get(this.baseUrl + url, {
-                headers: this.headers
-            });
-        } catch (e) {
-            this.printError(e);
-
-            return null;
-        }
+        return axios.get(this.baseUrl + url, {
+            headers: this.headers
+        }).catch(e => {
+            this.erroHandler.handle(e);
+        });
     }
 
     printError(e) {
@@ -99,5 +92,9 @@ export default class Api {
             code,
             quantity
         });
+    }
+
+    async crash() {
+        return await this.post('/crash');
     }
 }

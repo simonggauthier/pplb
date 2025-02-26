@@ -11,7 +11,24 @@ export default class Controller {
         this.log = log;
 
         this.character = null;
-        this.api = new Api(token, characterName, log);
+
+        this.running = true;
+
+        this.errorCount = 0;
+        this.maxErrors = 3;
+
+        this.api = new Api(token, characterName, log, {
+            handle: (error) => {
+                this.say('Error: ' + error.message);
+
+                this.errorCount++;
+
+                if (this.errorCount >= this.maxErrors) {
+                    this.say('Too many errors, crashing...');
+                    this.running = false;
+                }
+            }
+        });
     }
 
     say(msg) {
@@ -165,5 +182,9 @@ export default class Controller {
         const result = await this.api.withdrawFromBank(code, quantity);
 
         await this.waitForCooldown(cd(result));
+    }
+
+    async crash() {
+        await this.api.crash();
     }
 };

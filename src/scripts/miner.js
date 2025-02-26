@@ -27,9 +27,7 @@ export default class Miner {
     async start() {
         this.controller.say('Miner mode');
 
-        let run = true;
-
-        while (run) {
+        while (this.controller.running) {
             for (let base of this.bases) {
                 await this.controller.getCharacter();
 

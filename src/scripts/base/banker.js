@@ -12,19 +12,19 @@ export default class Banker {
                 this.controller.say('Banking ' + count + ' ' + itemCodeToBank);
 
                 await this.controller.moveTo(this.options.bankPosition[0], this.options.bankPosition[1]);
-                await this.controller.depositToBank(itemCodeToBank, count);
+                await this.controller.depositToBank(itemCodeToBank, count);tryToPickupItemCodes
+            }
+        }
 
-                // When banking, check if we can pick up items
-                const bankItems = await this.controller.getBankItems();
+        const bankItems = this.controller.getBankItems();
 
-                if (this.options.itemCodesToWithdraw) {
-                    for (let itemCodeToWithdraw of this.options.itemCodesToWithdraw) {
-                        for (let bankItem of bankItems) {
-                            if (bankItem['code'] === itemCodeToWithdraw) {
-                                await this.controller.withdrawFromBank(itemCodeToWithdraw, bankItem['quantity']);
-                            }
-                        }
-                    }
+        for (let itemCodeToWithdraw of this.options.itemCodesToWithdraw) {
+            for (let bankItem of bankItems) {
+                if (bankItem['code'] === itemCodeToWithdraw) {
+                    this.controller.say('Withdrawing ' + bankItem['quantity'] + ' ' + itemCodeToWithdraw);
+
+                    await this.controller.moveTo(this.options.bankPosition[0], this.options.bankPosition[1]);
+                    await this.controller.withdrawFromBank(itemCodeToWithdraw, bankItem['quantity']);
                 }
             }
         }

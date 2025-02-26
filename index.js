@@ -43,4 +43,13 @@ async function main () {
     script.make(controller).start();
 }
 
-main();
+async function crash() {
+    const log = new Log('info');
+    const controller = new Controller('', log);
+
+    while (controller.running) {
+        await controller.crash();
+    }
+}
+
+crash();
