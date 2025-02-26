@@ -12,11 +12,11 @@ export default class Banker {
                 this.controller.say('Banking ' + count + ' ' + itemCodeToBank);
 
                 await this.controller.moveTo(this.options.bankPosition[0], this.options.bankPosition[1]);
-                await this.controller.depositToBank(itemCodeToBank, count);tryToPickupItemCodes
+                await this.controller.depositToBank(itemCodeToBank, count);
             }
         }
 
-        const bankItems = this.controller.getBankItems();
+        const bankItems = await this.controller.getBankItems();
 
         for (let itemCodeToWithdraw of this.options.itemCodesToWithdraw) {
             for (let bankItem of bankItems) {
