@@ -12,12 +12,12 @@ export default class ChickenFighter {
                 bankPosition: [4, 1],
                 itemCodesNeeded: ['cooked_gudgeon'],
                 itemThreshold: 7,
-                itemPickupCount: 20
+                itemPickupCount: 30
             }),
             new BankerIn(controller, {
                 bankPosition: [4, 1],
                 itemCodesToBank: ['feather', 'raw_chicken', 'egg'],
-                itemThreshold: 10
+                itemThreshold: 20
             }),
             new Healer(controller, {
                 healRatio: 0.7,

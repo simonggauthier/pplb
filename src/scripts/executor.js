@@ -11,7 +11,7 @@ export default class Executor {
     async start() {
         this.controller.say('Executing');
 
-        const total = 1710;
+        let total = 538;
         const page = 99;
 
         while (total > 0) {
@@ -23,6 +23,8 @@ export default class Executor {
 
             await this.controller.moveTo(4, 1);
             await this.controller.depositToBank('small_health_potion', page / 3);
+
+            total -= page;
         }
     }
 };
