@@ -1,4 +1,5 @@
-import Banker from "./base/banker.js";
+import BankerIn from './base/banker-in.js';
+import BankerOut from './base/banker-out.js';
 import Healer from "./base/healer.js";
 import Fighter from "./base/fighter.js";
 
@@ -7,6 +8,17 @@ export default class ChickenFighter {
         this.controller = controller;
 
         this.bases = [
+            new BankerOut(controller, {
+                bankPosition: [4, 1],
+                itemCodesNeeded: ['cooked_gudgeon'],
+                itemThreshold: 7,
+                itemPickupCount: 20
+            }),
+            new BankerIn(controller, {
+                bankPosition: [4, 1],
+                itemCodesToBank: ['feather', 'raw_chicken', 'egg'],
+                itemThreshold: 10
+            }),
             new Healer(controller, {
                 healRatio: 0.7,
                 healFoodItemCode: 'cooked_gudgeon'

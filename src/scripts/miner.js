@@ -1,12 +1,12 @@
 import GathererCrafter from "./base/gatherer-crafter.js";
-import Banker from "./base/banker.js";
+import BankerIn from "./base/banker-in.js";
 
 export default class Miner {
     constructor(controller) {
         this.controller = controller;
 
         this.bases = [
-            new Banker(controller, {
+            new BankerIn(controller, {
                 bankPosition: [4, 1],
                 itemCodesToBank: ['copper', 'emerald_stone', 'topaz_stone', 'ruby_stone', 'sapphire_stone'],
                 itemThreshold: 10
