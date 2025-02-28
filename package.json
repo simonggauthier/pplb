@@ -8,7 +8,7 @@
     "main": "node index.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Simon's License - Use only for military purpose",
   "dependencies": {
     "axios": "^1.7.9"
   }
