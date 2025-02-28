@@ -78,6 +78,20 @@ export default class Controller {
         return this.character[skillName + '_level'];
     }
 
+    async mainLoop(modeName, bases) {
+        this.say(modeName + ' mode');
+
+        while (this.running) {
+            for (let base of bases) {
+                this.say('Running base ' + base.getName());
+
+                await this.getCharacter();
+
+                await base.start();
+            }
+        }
+    }
+
     async wait(seconds) {
         this.say('Waiting for ' + seconds + ' seconds...');
 
@@ -100,6 +114,8 @@ export default class Controller {
     }
 
     async moveTo(x, y) {
+        await this.getCharacter();
+
         if (this.character['x'] === x && this.character['y'] === y) {
             this.say('Already at ' + x + ', ' + y);
 

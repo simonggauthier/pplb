@@ -10,7 +10,6 @@ export default class Alchemist {
                 bankPosition: [4, 1],
                 itemCodesToBank: ['sunflower'],
                 itemThreshold: 80,
-                itemCodesToWithdraw: []
             }),
             new GathererCrafter(controller, {
                 gatherPosition: [2, 2],
@@ -25,14 +24,6 @@ export default class Alchemist {
     }
 
     async start() {
-        this.controller.say('Alchemist mode');
-
-        while (this.controller.running) {
-            for (let base of this.bases) {
-                await this.controller.getCharacter();
-
-                await base.start();
-            }
-        }
+        await this.controller.mainLoop('Alchemist', this.bases);
     }
 };

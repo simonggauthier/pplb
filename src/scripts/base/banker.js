@@ -4,8 +4,12 @@ export default class Banker {
         this.options = options;
     }
 
+    getName() {
+        return 'Banker';
+    }
+
     async start() {
-        if (this.options.itemCodeToBank) {
+        if (this.options.itemCodesToBank) {
             for (let itemCodeToBank of this.options.itemCodesToBank) {
                 const count = this.controller.getInventoryItemCount(itemCodeToBank);
     
@@ -14,21 +18,6 @@ export default class Banker {
     
                     await this.controller.moveTo(this.options.bankPosition[0], this.options.bankPosition[1]);
                     await this.controller.depositToBank(itemCodeToBank, count);
-                }
-            }
-        }
-
-        if (this.options.itemCodesToWithdraw) {
-            const bankItems = await this.controller.getBankItems();
-
-            for (let itemCodeToWithdraw of this.options.itemCodesToWithdraw) {
-                for (let bankItem of bankItems) {
-                    if (bankItem['code'] === itemCodeToWithdraw) {
-                        this.controller.say('Withdrawing ' + this.options.itemCountToWithdraw + ' ' + itemCodeToWithdraw);
-    
-                        await this.controller.moveTo(this.options.bankPosition[0], this.options.bankPosition[1]);
-                        await this.controller.withdrawFromBank(itemCodeToWithdraw, this.options.itemCountToWithdraw);
-                    }
                 }
             }
         }

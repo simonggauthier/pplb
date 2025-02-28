@@ -18,14 +18,6 @@ export default class ChickenFighter {
     }
 
     async start() {
-        this.controller.say('Chicken fighting mode');
-
-        while (this.controller.running) {
-            for (let base of this.bases) {
-                await this.controller.getCharacter();
-
-                await base.start();
-            }
-        }
+        await this.controller.mainLoop('Chicken Fighter', this.bases);
     }
 };

@@ -4,6 +4,10 @@ export default class GathererCrafter {
         this.options = options;
     }
 
+    getName() {
+        return 'GathererCrafter';
+    }
+
     async start() {
         await this.craft();
         await this.gather();

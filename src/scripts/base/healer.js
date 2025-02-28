@@ -4,6 +4,10 @@ export default class Healer {
         this.options = options;
     }
 
+    getName() {
+        return 'Healer';
+    }
+
     async start() {
         while (this.controller.getHp() < this.controller.getMaxHp() * this.options.healRatio) {
             if (this.options.healFoodItemCode &&

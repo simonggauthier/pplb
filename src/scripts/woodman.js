@@ -9,8 +9,7 @@ export default class Woodman {
             new Banker(controller, {
                 bankPosition: [4, 1],
                 itemCodesToBank: ['ash_plank', 'sap'],
-                itemThreshold: 10,
-                itemCodesToWithdraw: ['ash_wood']
+                itemThreshold: 10
             }),
             new GathererCrafter(controller, {
                 gatherPosition: [-1, 0],
@@ -25,14 +24,6 @@ export default class Woodman {
     }
 
     async start() {
-        this.controller.say('Woodman mode');
-
-        while (this.controller.running) {
-            for (let base of this.bases) {
-                await this.controller.getCharacter();
-
-                await base.start();
-            }
-        }
+        await this.controller.mainLoop('Woodman', this.bases);
     }
 };

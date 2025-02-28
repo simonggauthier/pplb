@@ -8,9 +8,8 @@ export default class Miner {
         this.bases = [
             new Banker(controller, {
                 bankPosition: [4, 1],
-                itemCodesToBank: ['copper'],
-                itemThreshold: 10,
-                itemCodesToWithdraw: ['copper_ore']
+                itemCodesToBank: ['copper', 'emerald_stone', 'topaz_stone', 'ruby_stone', 'sapphire_stone'],
+                itemThreshold: 10
             }),
             new GathererCrafter(controller, {
                 gatherPosition: [2, 0],
@@ -25,14 +24,6 @@ export default class Miner {
     }
 
     async start() {
-        this.controller.say('Miner mode');
-
-        while (this.controller.running) {
-            for (let base of this.bases) {
-                await this.controller.getCharacter();
-
-                await base.start();
-            }
-        }
+        await this.controller.mainLoop('Miner', this.bases);
     }
 };

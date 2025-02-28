@@ -4,6 +4,10 @@ export default class Fighter {
         this.options = options;
     }
 
+    getName() {
+        return 'Fighter';
+    }
+
     async start() {
         this.controller.say('Fighting!');
 

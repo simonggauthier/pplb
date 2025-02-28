@@ -4,6 +4,7 @@ import Woodman from './src/scripts/woodman.js';
 import Miner from './src/scripts/miner.js';
 import Fisherman from './src/scripts/fisherman.js';
 import Alchemist from './src/scripts/alchemist.js';
+import Executor from './src/scripts/base/executor.js';
 import Log from './src/log.js';
 
 const scripts = [
@@ -26,6 +27,10 @@ const scripts = [
     {
         name: 'alch',
         make: (controller) => new Alchemist(controller)
+    },
+    {
+        name: 'exec',
+        make: (controller) => new Executor(controller)
     }
 ];
 

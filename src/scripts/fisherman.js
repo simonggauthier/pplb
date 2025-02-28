@@ -9,8 +9,7 @@ export default class Fisherman {
             new Banker(controller, {
                 bankPosition: [4, 1],
                 itemCodesToBank: ['cooked_gudgeon', 'algae'],
-                itemThreshold: 10,
-                itemCodesToWithdraw: ['gudgeon']
+                itemThreshold: 10
             }),
             new GathererCrafter(controller, {
                 gatherPosition: [4, 2],
@@ -25,14 +24,6 @@ export default class Fisherman {
     }
 
     async start() {
-        this.controller.say('Fisherman mode');
-
-        while (this.controller.running) {
-            for (let base of this.bases) {
-                await this.controller.getCharacter();
-
-                await base.start();
-            }
-        }
+        await this.controller.mainLoop('Fisherman', this.bases);
     }
 };
